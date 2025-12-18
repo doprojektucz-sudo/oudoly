@@ -49,7 +49,7 @@ export default function Header() {
             >
               <Fish className="w-6 h-6 text-white" />
             </div>
-            <div className="hidden sm:block">
+            <div className="">
               <span
                 className={`text-xl font-serif font-semibold transition-colors duration-300 ${
                   isScrolled ? 'text-primary-700' : 'text-white'
