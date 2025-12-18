@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Zarybnění jednotlivých rybníků
+model Pond {
+  id          String   @id @default(cuid())
+  name        String   // Spodní, Prostřední, Horní
+  slug        String   @unique
+  area        Float    // rozloha v ha
+  avgDepth    Float    // průměrná hloubka v m
+  description String?
+  order       Int      @default(0)
+  fish        Fish[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Fish {
+  id        String   @id @default(cuid())
+  species   String   // Kapr, Amur, Štika, etc.
+  sizeRange String   // "1,5-2,5 kg" nebo "5-20 kg"
+  quantity  Int
+  pond      Pond     @relation(fields: [pondId], references: [id], onDelete: Cascade)
+  pondId    String
+  year      Int      @default(2025)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Ceník ubytování
+model AccommodationPrice {
+  id          String   @id @default(cuid())
+  name        String   // Víkend, Všední den, Týden
+  duration    String   // "Pá až Ne", "1 den", "6-8 dní"
+  price       Int      // v Kč
+  description String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Ceník ryb k odkupu
+model FishPrice {
+  id        String   @id @default(cuid())
+  species   String   // Kapr, Amur, Lín, Štika, Candát
+  maxSize   String?  // "do 60 cm" nebo null
+  pricePerKg Int     // cena za kg v Kč
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Kontaktní údaje
+model Contact {
+  id        String   @id @default(cuid())
+  type      String   // email, phone, address, facebook, whatsapp
+  value     String
+  label     String?  // popisek
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Galerie
+model GalleryImage {
+  id          String   @id @default(cuid())
+  url         String
+  alt         String
+  category    String   // chata, rybniky, ulovky
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Kontaktní formulář - zprávy
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// Vybavení chaty
+model Amenity {
+  id        String   @id @default(cuid())
+  name      String
+  icon      String   // název Lucide ikony
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

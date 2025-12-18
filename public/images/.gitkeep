@@ -1,0 +1,22 @@
+# Placeholder pro obrázky
+# Nahraďte skutečnými fotografiemi:
+
+# Hero obrázky:
+# - hero-bg.jpg (hlavní stránka, 1920x1080)
+# - rybareni-hero.jpg
+# - nocovani-hero.jpg
+# - galerie-hero.jpg
+# - kontakt-hero.jpg
+
+# About sekce:
+# - about-main.jpg
+# - about-chata.jpg
+# - about-ovce.jpg
+
+# Galerie:
+# /gallery/chata-*.jpg
+# /gallery/rybnik-*.jpg
+# /gallery/ulovek-*.jpg
+
+# OG image:
+# - og-image.jpg (1200x630)
