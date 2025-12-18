@@ -15,26 +15,56 @@ const navigation = [
 ];
 
 export default function Header() {
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // Hydration fix - počkej na mount před čtením window
   useEffect(() => {
+    setMounted(true);
+    // Nastav správnou hodnotu hned po mountu
+    setIsScrolled(window.scrollY > 50);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mounted]);
+
+  // Zavřít menu při změně stránky
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Zamezit scrollování když je otevřené mobilní menu
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Dokud není mounted, renderuj transparentní header (default stav)
+  const showScrolledStyle = mounted && isScrolled;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-[var(--shadow-soft)]'
-          : 'bg-transparent'
-      }`}
+      className={`top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        showScrolledStyle
+          ? 'fixed bg-white/95 backdrop-blur-md shadow-sm'
+          : 'absolute bg-transparent'
+      } ${isMobileMenuOpen ? 'bg-white/95 backdrop-blur-md' : ''}`}
     >
       <nav className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-20">
@@ -42,24 +72,28 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-3 group">
             <div
               className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-                isScrolled
+                showScrolledStyle || isMobileMenuOpen
                   ? 'bg-primary-700'
                   : 'bg-white/20 backdrop-blur-sm'
               }`}
             >
               <Fish className="w-6 h-6 text-white" />
             </div>
-            <div className="">
+            <div>
               <span
                 className={`text-xl font-serif font-semibold transition-colors duration-300 ${
-                  isScrolled ? 'text-primary-700' : 'text-white'
+                  showScrolledStyle || isMobileMenuOpen
+                    ? 'text-primary-700'
+                    : 'text-white'
                 }`}
               >
                 Oudoly
               </span>
               <span
                 className={`block text-xs tracking-wider uppercase transition-colors duration-300 ${
-                  isScrolled ? 'text-neutral-500' : 'text-white/70'
+                  showScrolledStyle || isMobileMenuOpen
+                    ? 'text-neutral-500'
+                    : 'text-white/70'
                 }`}
               >
                 Rybniční kaskáda
@@ -75,12 +109,12 @@ export default function Header() {
                 href={item.href}
                 className={`relative py-2 text-sm font-medium transition-colors duration-300 ${
                   pathname === item.href
-                    ? isScrolled
+                    ? showScrolledStyle
                       ? 'text-primary-600'
                       : 'text-white'
-                    : isScrolled
-                    ? 'text-neutral-600 hover:text-primary-600'
-                    : 'text-white/80 hover:text-white'
+                    : showScrolledStyle
+                      ? 'text-neutral-600 hover:text-primary-600'
+                      : 'text-white/80 hover:text-white'
                 }`}
               >
                 {item.name}
@@ -88,7 +122,7 @@ export default function Header() {
                   <motion.div
                     layoutId="activeNav"
                     className={`absolute -bottom-1 left-0 right-0 h-0.5 ${
-                      isScrolled ? 'bg-primary-500' : 'bg-white'
+                      showScrolledStyle ? 'bg-primary-500' : 'bg-white'
                     }`}
                   />
                 )}
@@ -99,9 +133,9 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:+420123456789"
+              href="tel:+420732878036"
               className={`flex items-center gap-2 text-sm font-medium transition-colors duration-300 ${
-                isScrolled
+                showScrolledStyle
                   ? 'text-neutral-600 hover:text-primary-600'
                   : 'text-white/80 hover:text-white'
               }`}
@@ -112,7 +146,7 @@ export default function Header() {
             <Link
               href="/kontakt"
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                isScrolled
+                showScrolledStyle
                   ? 'bg-primary-700 text-white hover:bg-primary-600'
                   : 'bg-white text-primary-700 hover:bg-white/90'
               }`}
@@ -125,7 +159,7 @@ export default function Header() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled
+              showScrolledStyle || isMobileMenuOpen
                 ? 'text-primary-700 hover:bg-neutral-100'
                 : 'text-white hover:bg-white/10'
             }`}
