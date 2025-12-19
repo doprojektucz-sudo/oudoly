@@ -121,14 +121,18 @@ export const contacts: Contact[] = [
 
 // Galerie (placeholder URLs - nahradit skutečnými)
 export const galleryImages: GalleryImage[] = [
-  { id: '1', url: '/images/gallery/chata-exterior.jpg', alt: 'Chata u rybníka', category: 'chata', featured: true, order: 1 },
-  { id: '2', url: '/images/gallery/chata-interior.jpg', alt: 'Interiér chaty', category: 'chata', featured: false, order: 2 },
-  { id: '3', url: '/images/gallery/chata-krb.jpg', alt: 'Krb v chatě', category: 'chata', featured: false, order: 3 },
-  { id: '4', url: '/images/gallery/rybnik-1.jpg', alt: 'Spodní rybník', category: 'rybniky', featured: true, order: 1 },
-  { id: '5', url: '/images/gallery/rybnik-2.jpg', alt: 'Prostřední rybník', category: 'rybniky', featured: false, order: 2 },
-  { id: '6', url: '/images/rybareni-hero.webp', alt: 'Horní rybník', category: 'rybniky', featured: false, order: 3 },
-  { id: '7', url: '/images/gallery/ulovek-1.jpg', alt: 'Kapr 15 kg', category: 'ulovky', featured: true, order: 1 },
-  { id: '8', url: '/images/gallery/ulovek-2.jpg', alt: 'Amur', category: 'ulovky', featured: false, order: 2 },
+  { id: '1', url: '/images/gallery/energie_na_cesty.webp', alt: 'Chata u rybníka', category: 'chata', featured: true, order: 1 },
+  { id: '2', url: '/images/gallery/gauc.webp', alt: 'Interiér chaty', category: 'chata', featured: false, order: 2 },
+  { id: '3', url: '/images/gallery/kuchynka.webp', alt: 'Krb v chatě', category: 'chata', featured: false, order: 3 },
+  { id: '3', url: '/images/gallery/palanda.webp', alt: 'Krb v chatě', category: 'chata', featured: false, order: 4 },
+  { id: '3', url: '/images/gallery/pohled_z_chaty.webp', alt: 'Krb v chatě', category: 'chata', featured: false, order: 5 },
+  { id: '3', url: '/images/gallery/příjezd.webp', alt: 'Krb v chatě', category: 'chata', featured: false, order: 6 },
+  { id: '3', url: '/images/gallery/sezeni_a_krb.webp', alt: 'Krb v chatě', category: 'chata', featured: false, order: 7 },
+  { id: '4', url: '/images/gallery/rybnik-1.jpg', alt: 'Spodní rybník', category: 'rybniky', featured: true, order: 111 },
+  { id: '5', url: '/images/gallery/rybnik-2.jpg', alt: 'Prostřední rybník', category: 'rybniky', featured: false, order: 211 },
+  { id: '6', url: '/images/rybareni-hero.webp', alt: 'Horní rybník', category: 'rybniky', featured: false, order: 311 },
+  { id: '7', url: '/images/gallery/ulovek-1.jpg', alt: 'Kapr 15 kg', category: 'ulovky', featured: true, order: 111 },
+  { id: '8', url: '/images/gallery/ulovek-2.jpg', alt: 'Amur', category: 'ulovky', featured: false, order: 2111 },
 ];
 
 // Vybavení chaty
