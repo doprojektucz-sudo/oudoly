@@ -14,7 +14,7 @@ const navigation = {
   info: [
     { name: 'Ceník', href: '/nocovani#cenik' },
     { name: 'Návštěvní řád', href: '/nocovani#rad' },
-    { name: 'Zarybnění 2025', href: '/rybareni#zarybneni' },
+    { name: 'Zarybnění 2026', href: '/rybareni#zarybneni' },
   ],
 };
 

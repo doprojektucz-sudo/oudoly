@@ -1,6 +1,6 @@
 import { Pond, AccommodationPrice, FishPrice, ExtraPrice, Contact, GalleryImage, Amenity } from '@/types';
 
-// Rybníky a zarybnění 2025
+// Rybníky a zarybnění 2026
 export const ponds: Pond[] = [
   {
     id: '1',
@@ -13,12 +13,15 @@ export const ponds: Pond[] = [
     imageUrl: '/images/spodni.webp',
     order: 1,
     fish: [
-      { id: '1', species: 'Kapr (K3)', sizeRange: '1,5–2,5 kg', quantity: 150, pondId: '1', year: 2025 },
-      { id: '2', species: 'Kapr', sizeRange: '5–20 kg', quantity: 50, pondId: '1', year: 2025 },
-      { id: '3', species: 'Candát', sizeRange: '1 kg', quantity: 10, pondId: '1', year: 2025 },
-      { id: '4', species: 'Amur', sizeRange: '1–8 kg', quantity: 100, pondId: '1', year: 2025 },
-      { id: '5', species: 'Štika', sizeRange: '0,5–1,0 kg', quantity: 20, pondId: '1', year: 2025 },
-      { id: '6', species: 'Jeseter', sizeRange: '70–90 cm', quantity: 5, pondId: '1', year: 2025 },
+      { id: '1', species: 'Kapr', sizeRange: 'nad 10 kg', quantity: 20, pondId: '1', year: 2026 },
+      { id: '2', species: 'Kapr', sizeRange: 'nad 5 kg', quantity: 50, pondId: '1', year: 2026 },
+      { id: '3', species: 'Kapr', sizeRange: '1,6 kg', quantity: 150, pondId: '1', year: 2026 },
+      { id: '4', species: 'Amur', sizeRange: 'nad 5 kg', quantity: 10, pondId: '1', year: 2026 },
+      { id: '5', species: 'Amur', sizeRange: '2 kg', quantity: 70, pondId: '1', year: 2026 },
+      { id: '6', species: 'Štika', sizeRange: '', quantity: 55, pondId: '1', year: 2026 },
+      { id: '7', species: 'Candát', sizeRange: '', quantity: 35, pondId: '1', year: 2026 },
+      { id: '8', species: 'Jeseter', sizeRange: '85 cm', quantity: 1, pondId: '1', year: 2026 },
+      { id: '9', species: 'Jeseter', sizeRange: '15–20 cm', quantity: 20, pondId: '1', year: 2026 },
     ],
   },
   {
@@ -32,9 +35,10 @@ export const ponds: Pond[] = [
     imageUrl: '/images/about-main.webp',
     order: 2,
     fish: [
-      { id: '7', species: 'Kapr (K3)', sizeRange: '1,5–2,5 kg', quantity: 20, pondId: '2', year: 2025 },
-      { id: '8', species: 'Lín', sizeRange: '0,5–1,3 kg', quantity: 300, pondId: '2', year: 2025 },
-      { id: '9', species: 'Kapr', sizeRange: '4,0–5,0 kg', quantity: 10, pondId: '2', year: 2025 },
+      { id: '10', species: 'Kapr', sizeRange: '0,4 kg', quantity: 300, pondId: '2', year: 2026 },
+      { id: '11', species: 'Jeseter', sizeRange: '15–20 cm', quantity: 10, pondId: '2', year: 2026 },
+      { id: '12', species: 'Lín', sizeRange: '20 cm', quantity: 20, pondId: '2', year: 2026 },
+      { id: '13', species: 'Candát', sizeRange: '15 cm', quantity: 5, pondId: '2', year: 2026 },
     ],
   },
   {
@@ -48,7 +52,8 @@ export const ponds: Pond[] = [
     imageUrl: '/images/rybareni-hero.webp',
     order: 3,
     fish: [
-      { id: '10', species: 'Kapr (K3)', sizeRange: '1,5–2,5 kg', quantity: 150, pondId: '3', year: 2025 },
+      { id: '14', species: 'Kapr', sizeRange: '1,6 kg', quantity: 150, pondId: '3', year: 2026 },
+      { id: '15', species: 'Jeseter', sizeRange: '15–20 cm', quantity: 10, pondId: '3', year: 2026 },
     ],
   },
 ];
