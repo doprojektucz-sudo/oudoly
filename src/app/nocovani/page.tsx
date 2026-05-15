@@ -326,14 +326,14 @@ export default function NocovaniPage() {
             viewport={{ once: true }}
             className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <a
+    {/*         <a
               href="/documents/cenik-2025.pdf"
               download
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary-700 rounded-full font-medium hover:bg-primary-300 hover:text-white transition-all"
             >
               <Download className="w-5 h-5" />
               Stáhnout ceník
-            </a>
+            </a> */}
             <a
               href="/documents/navstevni-rad.pdf"
               download
