@@ -347,7 +347,7 @@ export default function NocovaniPage() {
       </section >
 
       {/* CTA */}
-      <section className="py-20 md:py-32 bg-neutral-50">
+      <section id="kalendar" className="py-20 md:py-32 bg-neutral-50 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           {/* Header */}
           <motion.div
@@ -358,7 +358,7 @@ export default function NocovaniPage() {
           >
             <Calendar className="w-12 h-12 text-primary-500 mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-serif text-primary-700 mb-6">
-              Kdy může být vaše?
+              Obsazenost chaty
             </h2>
             <p className="text-lg text-neutral-600">
               Podívejte se na dostupné termíny a&nbsp;rezervujte si pobyt.

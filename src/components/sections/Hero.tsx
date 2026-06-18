@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronDown, MapPin, Fish, Home } from 'lucide-react';
+import { ChevronDown, MapPin, Fish, Home, Calendar } from 'lucide-react';
 
 const slides = [
   {
@@ -78,9 +78,8 @@ export default function Hero() {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${
-              currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
-            }`}
+            className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
           >
             <div className="relative w-full h-full overflow-hidden">
               <Image
@@ -147,7 +146,7 @@ export default function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-16">
+         {/*    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
               <Link
                 href="/nocovani"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-primary-700 font-medium rounded-full hover:bg-neutral-50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
@@ -162,7 +161,25 @@ export default function Hero() {
                 <Fish className="w-5 h-5" />
                 Prozkoumat rybaření
               </Link>
-            </div>
+            </div> */}
+
+            {/* Volné termíny - cesta na kalendář obsazenosti */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mb-10 md:mb-16"
+            >
+              <Link
+                href="/nocovani#kalendar"
+                className="w-full sm:w-auto inline-flex items-center justify-center bg-white/10 gap-2 px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-white/30 text-white font-medium rounded-full hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+              >
+                <Calendar className="w-4 h-4 sm:w-8 sm:h-8 text-accent-400" />
+                <span className="underline text-3xl font-bold underline-offset-4 decoration-white/30 group-hover:decoration-white">
+                  Zobrazit volné termíny
+                </span>
+              </Link>
+            </motion.div>
 
             {/* Stats - responsive layout */}
             <motion.div
@@ -199,11 +216,10 @@ export default function Hero() {
             aria-label={`Přejít na slide ${index + 1}`}
           >
             <div
-              className={`relative overflow-hidden transition-all duration-300 h-1.5 sm:h-2 rounded-full ${
-                currentSlide === index
+              className={`relative overflow-hidden transition-all duration-300 h-1.5 sm:h-2 rounded-full ${currentSlide === index
                   ? 'w-12 sm:w-16 bg-white/30'
                   : 'w-8 sm:w-12 bg-white/20 hover:bg-white/40'
-              }`}
+                }`}
             >
               {currentSlide === index && (
                 <div
